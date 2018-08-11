@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Fails Themed Gifs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+        <style type="text/css">
+            button,
+            div,
+            form,
+            input {
+              margin: 10px;
+            }
+          </style>
+</head>
+
+<body>
+
+        <!-- <div class="card" style="width: 18rem;">
+                <img class="card-img-btm" src="https://media.giphy.com/media/hMKjvTYlSaFCU/giphy.gif" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">Rating: PG</p>
+                </div>
+              </div> -->
+
+<div id="buttonContainer">
+        <div class="container">
+                <div class="row justify-content-md-center">
+                  <div class="col col-lg-2">
+                  </div>
+                </div>
+        </div>
+</div>
+<div id="gifContainer"></div>
+<form id="gifForm">
+    <div class="form-group">
+        <label for="form ">Create a magical Gif button</label>
+        <input type="text" class="form-control" id="searchTerm" aria-describedby="emailHelp" placeholder="Enter a seach parameter here">
+        <small id="emailHelp" class="form-text text-muted">Go ahead...hit submit and see what will happen.</small>
+        <button type="submit" class="btn btn-success" id="addGifButton">Submit</button>
+    </div>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+
+//pre populated buttons
+var fails = ["Hold My Beer Fails", "Sports Fails", "Parkour Fails", "Baby Fails"]
+
+ function renderButtons () {
+     //clear out buttons prior to submit, or we will have repeats
+     $("#buttonContainer").empty();
+    //loop through buttons to prepopulate them 
+    for(var i = 0; i < fails.length; i++) {
+    //dynamically generate buttons
+    var a = $("<button>");
+    a.addClass("btn btn-secondary")
+    a.attr("data-name", fails[i]);
+    a.text(fails[i]);
+    $("#buttonContainer").append(a);
+    }
+};
+    
+//handles event when clicked
+$("#addGifButton").click(function(event){
+//using a form-- prevent them to take them to somewhere else
+event.preventDefault();
+//grab the search term from input box
+var fail = $("#searchTerm").val().trim();
+//add searched gif to button array
+fails.push(fail);
+$("#seachTerm").val("");
+renderButtons();
+});
+
+
+
+renderButtons();
+
+
+ 
+// <!-- 
+//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+//         gifSearch + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+
+
+//         // Performing our AJAX GET request
+//     $.ajax({
+//             url: queryURL,
+//             method: "GET"
+//         })
+//         // After the data comes back from the API
+//         .then(function (response) {
+//                 // Storing an array of results in the results variable
+//                 var results = response.data;
+
+
+//                 // Looping over every result item
+//                 for (var i = 0; i < results.length; i++) {
+//                     var gifDiv = $("<div class='item'>");
+
+//                     // Storing the result item's rating
+//                     var rating = results[i].rating;
+
+//                     // Creating a paragraph tag with the result item's rating
+//                     var p = $("<p>").text("Rating: " + rating);
+
+//                     // Creating an image tag
+//                     var gifImage = $("<img>");
+//                     var stillUrl = response[i].images.fixed_height_still.url;
+//                     var moveUrl = response[i].images.fixed_height.url;
+
+//                     // Giving the image tag an src attribute of a proprty pulled off the
+//                     // result item
+
+//                     // Setting the Image src attribute to imageUrl
+//                     gifImage.attr("src", stillUrl);
+//                     gifImage.attr("data-still", stillUrl);
+//                     gifImage.attr("data-animate", moveUrl);
+//                     gifImage.attr('data-state', "still");
+//                     gifImage.attr("alt", "gif image");
+
+//                     //Prepending the gifImage to the images div
+//                     $("#images").prepend(gifImage);
+
+//                     gifImage.attr("src", results[i].images.fixed_height.url);
+
+//                     // Appending the paragraph and personImage we created to the "gifDiv" div we created
+//                     gifDiv.append(p);
+//                     gifDiv.append(gifImage);
+
+//                     // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+//                     $("#gifcontainer").prepend(gifDiv);
+//                 }
+//             }
+//         });
+
+
+
+
+//     // Creating and storing an image tag
+//     var gifImage = $("<img class='img-responsive kitty' style='height: 300px;'>");
+
+
+
+
+//     $(document).on('click', '.kitty', function () {
+//         var state = $(this).attr('data-state');
+//         var moving = $(this).attr('data-animate');
+//         var still = $(this).attr('data-still');
+
+//         if (state === "still") {
+//             $(this).attr('src', moving);
+//             $(this).attr('data-state', 'animate');
+//         } else {
+//             $(this).attr('src', still);
+//             $(this).attr('data-state', 'still');
+//         }
+//     })
+
+
+
+//     // Storing our giphy API URL for a random cat image -->
+</script>
+</body>
+
+</html>
