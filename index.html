@@ -31,10 +31,10 @@
 
 <form id="gifForm">
     <div class="form-group">
-        <label for="form ">Create a magical Gif button</label>
-        <input type="text" class="form-control" id="data-name" placeholder="data-name">
-        <small id="emailHelp" class="form-text text-muted">Go ahead...hit submit and the magic.</small>
-        <button type="" class="btn btn-success" id="button">Submit</button>
+        <label for="form ">Create a magical button</label>
+        <input type="text" class="form-control" id="data-name" placeholder="type what you want to see here">
+        <small id="emailHelp" class="form-text text-muted">Go ahead...you'll get a good laugh.</small>
+        <button type="" class="btn btn-success" id="button">Make Magic!</button>
     </div>
 </form>
 
@@ -76,17 +76,13 @@ renderButtons();
 };
 
 
-
-$("#button").on("click",function() {
-    event.preventDefault();
+//MAJOR TASK 3: ON- CLICK AJAX CALL
+$("button").on("click",function() {
+    // event.preventDefault();
     //assign variable to retrive data of button clicked
     var fail = $(this).attr("#data-name");
-    addButtons()
-    //MAJOR TASK #3:  CREATE THE AJAX CALL, ASSIGN ATTRIBUTES 
-     //construct URL to search giphy 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         fail + "&api_key=dc6zaTOxFJmzC&limit=10";
-debugger
       $.ajax({
         url: queryURL,
         method: "GET"
@@ -120,15 +116,9 @@ debugger
             $("#gifContainer").prepend(gifDiv);
                 }
             })
+            addButtons()
         });
    
-
-renderButtons()
-
-
-
-
-
 // //MAJOR TASK 4: CREATE LOGIC FOR MOVING OR STILL 
     $(document).on('click', '.gif', function () {
         var state = $(this).attr('data-state');
@@ -143,11 +133,7 @@ renderButtons()
             $(this).attr('data-state', 'still');
         }
     })
-
-
-
-
-
+    renderButtons()
 </script>
 </body>
 
