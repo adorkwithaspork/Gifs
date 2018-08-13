@@ -54,7 +54,7 @@ var fails = ["Hold My Beer Fails", "Sports Fails", "Parkour Fails", "Baby Fails"
 //MAJOR TASK #2: CREATE A FUNCTION TO ADD BUTTONS 
 function addButtons() {
 //using a form-- prevent them to take them to somewhere else
-event.preventDefault();
+
 //grab the search term from input box
 var fail = $("#data-name").val().trim();
 //add searched gif to button array
@@ -64,27 +64,30 @@ renderButtons();
 };
 //MAJOR TASK 3: ON- CLICK AJAX CALL
 $(document).on("click","button",function() {
-    console.log("Hello World");
-    var b = $(this).attr('data-name');
-    console.log("b", b);
+    console.log("Hello World" ,"document on click finction");
+    event.preventDefault();
+    var dynamicButton = $(this).attr('data-name');
+    // console.log("db", dynamicButton);
     var fail = $("#data-name").val().trim();
-    console.log("b",b);
-    console.log("condition",b === b);
-    if (b) {
-        var fail = b
-        console.log("fail From condition",fail);
-        return fail;
-    }
+    // console.log("b",b);
+    // console.log("condition",b === b);
+    // if (b) {
+    //     var fail = b
+    //     console.log("fail From condition",fail);
+    //     return fail;
+    //}
     var queryURL;
     // event.preventDefault();
     //assign variable to retrive data of button clicked
     // var fail = $("#data-name").val().trim();
-    if (condition) {
-        return queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    console.log("db",dynamicButton)
+    console.log(dynamicButton === false)
+    if (dynamicButton === false) {
+        queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         fail + "&api_key=dc6zaTOxFJmzC&limit=10"; 
-    } else {
-        return queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        b + "&api_key=dc6zaTOxFJmzC&limit=10"; 
+    } else {   
+        queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        dynamicButton + "&api_key=dc6zaTOxFJmzC&limit=10"; 
     }
       $.ajax({
         url: queryURL,
@@ -92,9 +95,6 @@ $(document).on("click","button",function() {
       })
         // After the data comes back from the API
         .then(function(response) {
-            console.log("fail",fail);
-            console.log("b",b);
-            console.log(queryURL);
           // Storing an array of results in the results variable
           var results = response.data;
         // Looping over every result item
