@@ -88,8 +88,8 @@ renderButtons();
 };
 //MAJOR TASK 3: ON- CLICK AJAX CALL
 $(document).on("click","button",function() {
-    console.log("Hello World" ,"document on click finction");
     event.preventDefault();
+    $("#gifContainer").empty();
     var dynamicButton = $(this).attr('data-name');
     // console.log("db", dynamicButton);
     var fail = $("#data-name").val().trim();
