@@ -12,9 +12,33 @@
             input {
               margin: 10px;
             }
+            .img {
+
+                float: left;
+
+            }
+            .card{
+                align-content: center;
+            }
+            .jumbotron{
+                align-content: center;
+            }
           </style>
 </head>
 <body>
+
+        <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4">It's a Fail party!</h1>
+                  <p class="lead">Nothing like a little karaoke to let you know how drunk you really are...  Here's an awesome collection of fails.  Add more to the list!</p>
+                </div>
+                <!-- <div class="card" style="width: 18rem;">
+                        <img class="card-img-btm" src="https://media.giphy.com/media/hMKjvTYlSaFCU/giphy.gif" alt="Card image cap">
+                        <div class="card-body">
+                          <p class="card-text">Rating: PG</p>
+                        </div> -->
+              </div>
+            </div>
         <!-- <div class="card" style="width: 18rem;">
                 <img class="card-img-btm" src="https://media.giphy.com/media/hMKjvTYlSaFCU/giphy.gif" alt="Card image cap">
                 <div class="card-body">
@@ -28,7 +52,7 @@
         <label for="form ">Create a magical button</label>
         <input type="text" class="form-control" id="data-name" placeholder="type what you want to see here">
         <small id="emailHelp" class="form-text text-muted">Go ahead...you'll get a good laugh.</small>
-        <button class="btn btn-success" id="button">Make Magic!</button>
+        <button class="btn btn-success" id="button">Magic!</button>
     </div>
 </form>
 <div id="gifContainer"></div>
@@ -36,7 +60,7 @@
 <script type="text/javascript">
  
 // MAJOR TASK #1: CREATE A FUNCTION TO DYNAMICALLY PRE POPULATE BUTTONS 
-var fails = ["Hold My Beer Fails", "Sports Fails", "Parkour Fails", "Baby Fails"]
+var fails = ["Hold My Beer Fails", "Sports Fails", "Parkour Fails", "Baby Fails", "Office Fails", "Party Fails", "Branding Fails", "Segway Fails", "Bike Fails", "Parking Fails", "Animal Fails"]
  function renderButtons () {
      //clear out buttons prior to submit, or we will have repeats
      $("#buttonContainer").empty();
