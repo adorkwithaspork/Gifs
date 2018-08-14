@@ -69,7 +69,7 @@ $(document).on("click","button",function() {
     var dynamicButton = $(this).attr('data-name');
     // console.log("db", dynamicButton);
     var fail = $("#data-name").val().trim();
-    // console.log("b",b);
+    console.log("dynamicButton",dynamicButton);
     // console.log("condition",b === b);
     // if (b) {
     //     var fail = b
@@ -81,10 +81,13 @@ $(document).on("click","button",function() {
     //assign variable to retrive data of button clicked
     // var fail = $("#data-name").val().trim();
     console.log("db",dynamicButton)
-    console.log(dynamicButton === false)
-    if (dynamicButton === false) {
+    console.log(dynamicButton === undefined)
+    console.log("fail", fail)
+    if (dynamicButton === undefined) {
         queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         fail + "&api_key=dc6zaTOxFJmzC&limit=10"; 
+        addButtons();
+       
     } else {   
         queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         dynamicButton + "&api_key=dc6zaTOxFJmzC&limit=10"; 
@@ -122,8 +125,12 @@ $(document).on("click","button",function() {
             $("#gifContainer").prepend(gifDiv);
                 }
             })
-            addButtons()
+          
         });
+
+
+
+   
    
 // //MAJOR TASK 4: CREATE LOGIC FOR MOVING OR STILL 
     $(document).on('click', '.gif', function () {
